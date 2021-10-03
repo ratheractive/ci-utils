@@ -4,7 +4,8 @@ WORKDIR /helm
 
 COPY plugins plugins
 
-ENV HELM_DATA_HOME=/helm
+ENV HELM_DATA_HOME=/helm && \
+    HELM_EXPERIMENTAL_OCI=1
 
 RUN apt-get update && apt-get install -y curl ca-certificates openssl jq && \
     curl -s https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 --version v3.7.0 | bash && \
